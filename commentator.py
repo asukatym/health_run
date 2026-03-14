@@ -1,14 +1,7 @@
-import os
 import anthropic
 import pandas as pd
 
-try:
-    import streamlit as st
-    _api_key = st.secrets.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_API_KEY")
-except Exception:
-    _api_key = os.environ.get("ANTHROPIC_API_KEY")
-
-client = anthropic.Anthropic(api_key=_api_key)
+client = anthropic.Anthropic()
 
 
 def _build_prompt(row: pd.Series, history: pd.DataFrame) -> str:

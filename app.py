@@ -1,7 +1,12 @@
+import os
 from dotenv import load_dotenv
 load_dotenv()
 
 import streamlit as st
+
+# Streamlit Cloud のSecretsから環境変数にセット
+if "ANTHROPIC_API_KEY" in st.secrets:
+    os.environ["ANTHROPIC_API_KEY"] = st.secrets["ANTHROPIC_API_KEY"]
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
